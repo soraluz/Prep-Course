@@ -36,11 +36,12 @@ function agregarStringInvertida() {
   // Ej: this.reverse() => menem
   // 'toni'.reverse() => 'inot'
   // Pista: Necesitarás usar "this" dentro de "reverse"
-  var cadena='';
+  
   String.prototype.reverse=function(){
-    for(let i=0;i<this.length;i++){
-      cadena.push(this[i]);
-    }
+    var cadena='';
+    for(let i=this.length-1;i>=0;i--){
+      cadena=cadena +this[i];
+  }
   return cadena;
   }
 }
@@ -56,8 +57,27 @@ function agregarStringInvertida() {
     //   Domicilio: 'Saavedra 123'
     //  }
 
+    function Persona(nombre,apellido,edad,domicilio){
+      this.nombre=nombre;
+      this.apellido=apellido;
+      this.edad=edad;
+      this.domicilio=domicilio;
+
+    }
+    Persona.prototype.detalle=function(){
+      var obejto={
+        nombre:this.nombre,
+        apellido:this.apellido,
+        edad:this.edad,
+        domicilio:this.domicilio
+      }
+      return objeto;
+    }
+
+    /*
+
   class Persona {
-    constructor(/*Escribir los argumentos que recibe el constructor*/Nombre,Apellido,Edad,Domicilio)
+    constructor(/*Escribir los argumentos que recibe el constructor Nombre,Apellido,Edad,Domicilio)
                 {
                    this.Nombre=Nombre;
                    this.Apellido=Apellido;
@@ -75,19 +95,24 @@ function agregarStringInvertida() {
                   return objeto;
                 }
 }
+*/
 
 function crearInstanciaPersona(nombre, apellido, edad, dir) {
   //Con esta función vamos a crear una nueva persona a partir de nuestro constructor de persona (creado en el ejercicio anterior)
   //Recibirá los valores "Juan", "Perez", 22, "Saavedra 123" para sus respectivas propiedades
   //Devolver la nueva persona creada
 
-  var persona1= new Persona("Juan", "Perez", 22, "Saavedra 123");
+  //var persona1= new Persona("Juan", "Perez", 22, "Saavedra 123");
+  var persona1= new Persona(nombre, apellido,edad,dir);
   return persona1;
 }
   
 function agregarMetodo() {
   //La función agrega un método "datos" a la clase Persona que toma el nombre y la edad de la persona y devuelve: 
   //Ej: "Juan, 22 años"
+  Persona.prototype.datos=function(){
+    return (this.nombre + ', '+ this.edad+ ' años');
+  }
 }
   
 
